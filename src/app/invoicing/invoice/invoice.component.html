@@ -1,0 +1,29 @@
+<div class="invoice mx-2">
+  <div class="row">
+    <div class="col-3">
+      <h4 class="my-3 ml-2">Contractors:</h4>
+      <app-invoice-contractors (contractorsChanged)="onContractorsChanged($event)"></app-invoice-contractors>
+    </div>
+    <div class="col-9">
+        <div class="row">
+          <div class="col-8">
+              <h4 class="my-3 ml-2">Invoices:</h4>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Contractor: </label>
+              <select class="form-control" [(ngModel)]="invoice.client" (ngModelChange)="onSelectContractor($event)">
+                <option *ngFor="let contractor of availableContractors" [ngValue]="contractor">{{contractor.name}} ({{contractor.taxNumber}})</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <app-invoice-positions [positions]="invoice.items" (itemsChanged)="updateItems($event)"></app-invoice-positions>
+        <div class="row">
+          <div class="col-12">
+            <app-invoice-summary [summary]=invoiceSummary></app-invoice-summary>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

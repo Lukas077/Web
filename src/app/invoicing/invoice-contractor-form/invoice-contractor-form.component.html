@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit()" #contractorForm="ngForm">
+  <div class="form-group">
+    <label for="name">Contractor name</label>
+    <input type="text" class="form-control"
+      id="name"name="name"
+      [(ngModel)]="contractor.name" #name="ngModel"
+      [ngClass]="{'is-valid': name.valid, 'is-invalid': name.invalid}"
+      required>
+
+    <small class="form-text text-muted">Enter full contractor name.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="taxNumber">Tax number</label>
+    <input type="text" class="form-control"
+      id="taxNumber" name="taxNumber"
+      [(ngModel)]="contractor.taxNumber" #taxNumber="ngModel"
+      [ngClass]="{'is-valid': taxNumber.valid, 'is-invalid': taxNumber.invalid}"
+      required>
+    
+    <small class="form-text text-muted">Enter valid tax number.</small>
+  </div>
+
+  <button type="submit" class="btn btn-success"
+    [disabled]="name.invalid || taxNumber.invalid">
+    add contractor 
+    <i class="fa fa-plus"></i>
+  </button>
+</form>

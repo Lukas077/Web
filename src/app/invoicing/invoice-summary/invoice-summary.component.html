@@ -1,0 +1,7 @@
+<ul>
+  <li>Gross: {{ summary.brutto }}</li>
+  <li>Netto: {{ summary.netto }}</li>
+  <li>Tax: {{ summary.tax }}</li>
+  <li *ngIf="summary.contractor">Contractor: {{ summary.contractor.name }} ({{ summary.contractor.taxNumber }})</li>
+</ul>
+
